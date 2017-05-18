@@ -10,7 +10,7 @@
 
 	<!-- 扫描@Controller组件 -->
 	<!-- 提醒：请将com.corp.project修改为您的真实项目路径 -->
-	<context:component-scan base-package="aos;com.corp.project"
+	<context:component-scan base-package="aos;com.ct.crm"
 		use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 		<context:include-filter type="annotation"

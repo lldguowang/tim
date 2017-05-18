@@ -20,8 +20,8 @@ public class AOS {
 	 */
 	public static void main(String[] args) throws Exception {
 		AOSServer aosServer = new AOSServer();
-		aosServer.setWebContext("/aosuite");
-		aosServer.setPort(10010);
+		aosServer.setWebContext("/");
+		aosServer.setPort(8080);
 		aosServer.start();
 	}
 }

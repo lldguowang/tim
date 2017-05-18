@@ -29,7 +29,7 @@ public class DaoConsole {
 		//数据库名或数据库实例名
 		driverOpt.setCatalog("aosuite");
 		driverOpt.setUserName("root");
-		driverOpt.setPassword("root");
+		driverOpt.setPassword("8589506");
 		//===================
 		Dto dto = Dtos.newDto();
 		//改为自己存放相关文件的磁盘文件路径

@@ -34,7 +34,7 @@
 
 <aos:onready>
 	<aos:window id="w_login" title="欢迎使用${app_title}" maximizable="false" autoShow="false" closable="false" modal="false"
-		draggable="false" onshow="w_login_onshow" resizable="false" opacity="0" y="0" width="550" layout="anchor"
+		draggable="false" onshow="w_login_onshow" resizable="false" opacity="1" y="0" width="550" layout="anchor"
 		header="true">
 		<aos:panel contentEl="north_el" anchor="100%" />
 		<aos:tabpanel id="id_tabs" activeTab="0" plain="false" tabBarHeight="30" height="250" anchor="100%">
@@ -73,6 +73,9 @@
 		function w_login_onshow() {
 			var cmp = AOS.get('f_login.account');
 			cmp.focus();
+			var left = (Ext.getBody().getViewSize().width - 550) / 2;
+			var top = (Ext.getBody().getViewSize().height - 430) / 2;
+			w_login.setPosition(left, top, false)
 		}
 
 		//响应窗口变化事件
@@ -80,7 +83,7 @@
 			//w_login.center();
 			var left = (Ext.getBody().getViewSize().width - 550) / 2;
 			var top = (Ext.getBody().getViewSize().height - 430) / 2;
-			w_login.setPosition(left, top, true)
+			w_login.setPosition(left, top, false)
 		});
 
 		//监听帐号输入框回车键
@@ -107,7 +110,7 @@
 		}
 
 		//登录窗口动画
-		Ext.create('Ext.fx.Animator', {
+		/*Ext.create('Ext.fx.Animator', {
 			target : w_login,
 			duration : 1000,
 			easing : 'backOut',
@@ -123,7 +126,7 @@
 					top : (Ext.getBody().getViewSize().height - 430) / 2
 				}
 			}
-		});
+		});*/
 
 		//验证码首次加载动画
 		var _elvercode = Ext.get('vercode');

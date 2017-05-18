@@ -34,7 +34,7 @@
 	<div id="loading-mask"></div>
 	<div id="loading">
 		<c:choose>
-			<c:when test="${page_load_gif_ == 'run.gif'}">
+			<c:when test="${page_load_gif == 'run.gif'}">
 				<img src="${cxt}/static/image/gif/pageload/${page_load_gif}">
 			</c:when>
 			<c:otherwise>

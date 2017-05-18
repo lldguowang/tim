@@ -89,7 +89,7 @@
 			<!-- 数据源配置 -->
 			<entry key="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/aosuite?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;allowMultiQueries=true" />
 			<entry key="jdbc.username" value="root" />
-			<entry key="jdbc.password" value="root" />
+			<entry key="jdbc.password" value="8589506" />
 			<!-- Logback日志配置 -->
 			<entry key="dao" value="DEBUG" />
 			<entry key="aos" value="DEBUG" />
