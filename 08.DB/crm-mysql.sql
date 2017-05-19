@@ -99,6 +99,167 @@ CREATE TABLE `crm_role` (
 INSERT INTO `crm_role` VALUES ('-1', '超级用户角色', '1', '1', null, null, '2016-08-14 14:18:28', '-1');
 INSERT INTO `crm_role` VALUES ('296', '测试角色', '1', '1', '', '', '2017-03-26 23:42:34', '-1');
 
+-- ----------------------------
+-- Table structure for aos_role_module
+-- ----------------------------
+DROP TABLE IF EXISTS `crm_role_module`;
+CREATE TABLE `crm_role_module` (
+  `id` int(10) NOT NULL COMMENT '流水号',
+  `role_id` int(10) NOT NULL COMMENT ' 角色流水号',
+  `module_id` int(10) NOT NULL COMMENT '功能模块流水号',
+  `grant_type` varchar(255) NOT NULL COMMENT '权限类型',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `create_by` int(10) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `aos_sys_module_role_ukey` (`role_id`,`module_id`,`grant_type`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='功能模块-角色关联表';
+
+-- ----------------------------
+-- Records of aos_role_module
+-- ----------------------------
+INSERT INTO `crm_role_module` VALUES ('393', '-1', '-1', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('394', '-1', '26', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('395', '-1', '27', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('396', '-1', '38', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('397', '-1', '45', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('398', '-1', '46', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('399', '-1', '47', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('400', '-1', '49', '1', '2017-04-08 00:48:45', '-1');
+INSERT INTO `crm_role_module` VALUES ('401', '-1', '50', '1', '2017-04-08 00:48:45', '-1');
+
+
+-- ----------------------------
+-- Table structure for aos_user
+-- ----------------------------
+DROP TABLE IF EXISTS `crm_user`;
+CREATE TABLE `crm_user` (
+  `id` int(10) NOT NULL COMMENT '流水号',
+  `account` varchar(255) NOT NULL COMMENT '用户登录帐号',
+  `password` varchar(255) NOT NULL COMMENT '密码',
+  `name` varchar(255) NOT NULL COMMENT '用户姓名',
+  `sex` varchar(255) NOT NULL COMMENT '性别',
+  `status` varchar(255) NOT NULL COMMENT '用户状态',
+  `type` varchar(255) NOT NULL COMMENT '用户类型',
+  `org_id` int(10) NOT NULL COMMENT '所属部门流水号',
+  `email` varchar(255) DEFAULT NULL COMMENT '电子邮件',
+  `mobile` varchar(255) DEFAULT NULL COMMENT '联系电话',
+  `idno` varchar(255) DEFAULT NULL COMMENT '身份证号',
+  `skin` varchar(255) NOT NULL COMMENT '用户界面皮肤',
+  `biz_code` varchar(255) DEFAULT NULL COMMENT '业务对照码',
+  `address` varchar(500) DEFAULT NULL COMMENT '联系地址',
+  `remark` varchar(4000) DEFAULT NULL COMMENT '备注',
+  `is_del` varchar(255) NOT NULL COMMENT '是否已删除',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `create_by` int(10) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户基本信息表';
+
+-- ----------------------------
+-- Records of aos_user
+-- ----------------------------
+INSERT INTO `crm_user` VALUES ('-1', 'root', 'a2c292420f2af5038fefd1bb63eeb736', '超级用户', '1', '1', '1', '-1', '', '', '', 'blue', '', '', '', '0', '2016-08-12 17:38:19', '-1');
+INSERT INTO `crm_user` VALUES ('353', 'lilei', 'a2c292420f2af5038fefd1bb63eeb736', '李雷', '3', '1', '1', '74', null, null, null, 'blue', null, null, null, '0', '2017-03-27 18:20:28', '-1');
+
+-- ----------------------------
+-- Table structure for aos_user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `crm_user_role`;
+CREATE TABLE `crm_user_role` (
+  `id` int(10) NOT NULL COMMENT '流水号',
+  `user_id` int(10) NOT NULL COMMENT '用户流水号',
+  `role_id` int(10) NOT NULL COMMENT '角色流水号',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `create_by` int(10) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `aos_sys_user_role_ukey` (`user_id`,`role_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户-角色关联表';
+
+-- ----------------------------
+-- Records of aos_user_role
+-- ----------------------------
+INSERT INTO `crm_user_role` VALUES ('295', '-1', '-1', '2017-03-26 23:41:49', '-1');
+INSERT INTO `crm_user_role` VALUES ('356', '353', '296', '2017-03-28 18:30:00', '-1');
+
+
+-- ----------------------------
+-- Table structure for demo_account
+-- ----------------------------
+DROP TABLE IF EXISTS `crm_custom`;
+CREATE TABLE `crm_custom` (
+  `id` int(10) NOT NULL COMMENT '流水号',
+  `name` varchar(255) NOT NULL COMMENT '客户名称',
+  `address` varchar(255) DEFAULT NULL COMMENT '客户地址',
+  `custom_name` varchar(20) DEFAULT NULL COMMENT '接口人名称',
+  `custom_sex` varchar(2) DEFAULT NULL COMMENT '接口人性别',
+  `custom_birthday` date DEFAULT NULL COMMENT '接口人生日',
+  `custom_age` int(255) DEFAULT NULL COMMENT '接口人年龄',
+  `custom_id_no` varchar(255) DEFAULT NULL COMMENT '接口人身份证号',
+  `custom_number` varchar(20) DEFAULT NULL COMMENT '接口人电话',
+  `custom_org` varchar(255) DEFAULT NULL COMMENT '接口人所属机构',
+  `custom_addr` varchar(255) DEFAULT NULL COMMENT '接口人地址',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `create_user_id` varchar(64) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户管理表';
+
+-- ----------------------------
+-- Table structure for demo_account
+-- ----------------------------
+DROP TABLE IF EXISTS `crm_custom_software`;
+CREATE TABLE `crm_custom_software` (
+  `id` int(10) NOT NULL COMMENT '流水号',
+  `custom_id` int(10) NOT NULL COMMENT '客户流水号',
+  `client_id` varchar(255) NOT NULL COMMENT '客户端标识',
+  `client_type` varchar(10) NOT NULL COMMENT '客户端类型',
+  `create_time` datetime NOT NULL COMMENT '客户端注册时间',
+  `create_user_id` varchar(64) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='软件注册表';
+
+-- ----------------------------
+-- Table structure for demo_account
+-- ----------------------------
+DROP TABLE IF EXISTS `crm_project`;
+CREATE TABLE `crm_project` (
+  `id` int(10) NOT NULL COMMENT '流水号',
+  `name` varchar(50) NOT NULL COMMENT '项目名',
+  `comments` varchar(255) NOT NULL COMMENT '项目介绍',
+  `engineer` varchar(20) NOT NULL COMMENT '项目负责人',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `create_user_id` varchar(64) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='软件注册表';
+
+-- ----------------------------
+-- Table structure for demo_account
+-- ----------------------------
+DROP TABLE IF EXISTS `crm_project_implement`;
+CREATE TABLE `crm_project_implement` (
+  `id` int(10) NOT NULL COMMENT '流水号',
+  `project_id` int(10) NOT NULL COMMENT '项目流水号',
+  `custom_id` varchar(255) NOT NULL COMMENT '项目介绍',
+  `implement_engineer` varchar(20) NOT NULL COMMENT '实施工程师',
+  `implement_time` datetime NOT NULL COMMENT '实施时间',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `create_user_id` varchar(64) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='项目实施表';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
